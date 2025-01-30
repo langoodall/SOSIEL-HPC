@@ -31,6 +31,12 @@
     <PackageReference Include="NLog" Version="4.7.8" />
   </ItemGroup>
 
+    <ItemGroup>
+    <Reference Include="SOSIEL-v3">
+      <HintPath>..\..\Support-Library-Dlls-v7\SOSIEL-v3.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="$(ProjectDir)postbuild.bat $(Configuration)" />
   </Target>
