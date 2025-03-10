@@ -1,0 +1,9 @@
+LandisData   Extension
+
+Name         "SOSIEL"
+Version      "3.0.0"
+Type         disturbance:harvest
+Assembly     Landis.Extension.SOSIEL-v3
+Class        Landis.Extension.SOSIEL.PlugIn
+Description  "SOSIEL"
+CoreVersion  7.0
