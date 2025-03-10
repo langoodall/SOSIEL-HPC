@@ -35,6 +35,9 @@
     <Reference Include="SOSIEL-v3">
       <HintPath>..\..\Support-Library-Dlls-v7\SOSIEL-v3.dll</HintPath>
     </Reference>
+    <Reference Include="SOSIEL.VBGP">
+      <HintPath>../../Support-Library-Dlls-v7/SOSIEL.VBGP-v0.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
