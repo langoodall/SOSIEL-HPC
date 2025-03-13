@@ -8,7 +8,6 @@ using System.Linq;
 using SOSIEL.Configuration;
 using SOSIEL.Entities;
 using HelperSosielVariables = SOSIEL.Helpers.SosielVariables; // Alias for SOSIEL.Helpers.SosielVariables
-using EntitySosielVariables = SOSIEL.Entities.SosielVariables; // Alias for SOSIEL.Entities.SosielVariables
 using SOSIEL.Randoms;
 
 namespace SOSIEL.Processes
