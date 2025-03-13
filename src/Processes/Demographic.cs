@@ -7,7 +7,7 @@ using System.Linq;
 
 using SOSIEL.Configuration;
 using SOSIEL.Entities;
-using HelperSosielVariables = SOSIEL.Helpers.SosielVariables; // Alias for SOSIEL.Helpers.SosielVariables
+using SOSIEL.Helpers;
 using SOSIEL.Randoms;
 
 namespace SOSIEL.Processes
@@ -40,17 +40,16 @@ namespace SOSIEL.Processes
                 .SelectMany(kvp => kvp.Value)
                 .ToList();
             var activeAgents = agentList.ActiveAgents.Except(unactiveAgents).ToList();
-            var pairs = activeAgents.Where(a => a[HelperSosielVariables.PairStatus] == PairStatus.Paired)
-                .GroupBy(a => a[HelperSosielVariables.NuclearFamily])
+            var pairs = activeAgents.Where(a => a[SosielVariables.PairStatus] == PairStatus.Paired)
+                .GroupBy(a => a[SosielVariables.NuclearFamily])
                 .ToList();
-
 
             foreach (var pair in pairs)
             {
                 var pairList = pair.ToList();
                 if (pairList.Count != 2) continue;
 
-                var averageAge = (int)Math.Ceiling(pair.Average(a => (int)a[HelperSosielVariables.Age]));
+                var averageAge = (int)Math.Ceiling(pair.Average(a => (int)a[SosielVariables.Age]));
                 if (_birthProbability.IsVariableSpecificEventOccur(averageAge))
                 {
                     //generate random value to determine gender
@@ -62,9 +61,9 @@ namespace SOSIEL.Processes
                     var childName = $"{baseAgent.Archetype.NamePrefix}{childId}";
 
                     var child = baseAgent.CreateChild(gender == 0 ? Gender.Male : Gender.Female, childName);
-                    child[HelperSosielVariables.Household] = baseAgent[HelperSosielVariables.Household];
-                    child[HelperSosielVariables.NuclearFamily] = baseAgent[HelperSosielVariables.NuclearFamily];
-                    child[HelperSosielVariables.ExtendedFamily] = baseAgent[HelperSosielVariables.ExtendedFamily];
+                    child[SosielVariables.Household] = baseAgent[SosielVariables.Household];
+                    child[SosielVariables.NuclearFamily] = baseAgent[SosielVariables.NuclearFamily];
+                    child[SosielVariables.ExtendedFamily] = baseAgent[SosielVariables.ExtendedFamily];
 
                     var extendedFamilies = baseAgent[SosielVariables.ExtendedFamily] as List<string>;
                     child.ConnectedAgents.AddRange(pairList);
